@@ -105,7 +105,7 @@
 
 .drawerActions {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
     border-bottom: 1px solid #e2e2e2;
     padding: 10px 14px;

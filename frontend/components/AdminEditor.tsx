@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, GripVertical, PanelRightClose, PanelRightOpen, Plus, Save, Trash2, Upload } from "lucide-react";
+import { ExternalLink, GripVertical, PanelRightClose, PanelRightOpen, Plus, Rocket, Save, Trash2, Upload } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import type { ChangeEvent } from "react";
@@ -232,6 +232,7 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
     const [embedUrl, setEmbedUrl] = useState("");
     const [status, setStatus] = useState("当前没有未保存改动");
     const [isSaving, setIsSaving] = useState(false);
+    const [isPublishing, setIsPublishing] = useState(false);
 
     const selectedProject = useMemo(
         () => config.projects.find((project) => project.slug === selectedProjectSlug) ?? config.projects[0],
@@ -447,10 +448,38 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
 
             setStatus(`已保存 ${new Date().toLocaleTimeString()}`);
             router.refresh();
+            return true;
         } catch (error) {
             setStatus(error instanceof Error ? error.message : "保存失败");
+            return false;
         } finally {
             setIsSaving(false);
+        }
+    }
+
+    async function publishSite() {
+        setIsPublishing(true);
+        setStatus("正在保存并发布...");
+
+        try {
+            const saved = await saveConfig();
+            if (!saved) {
+                throw new Error("保存失败，已取消发布。");
+            }
+
+            setStatus("正在构建静态站并推送 GitHub...");
+            const response = await fetch("/api/publish", { method: "POST" });
+            const result = (await response.json()) as { message?: string; error?: string };
+
+            if (!response.ok) {
+                throw new Error(result.error ?? "发布失败");
+            }
+
+            setStatus(result.message ?? "已推送到 GitHub，正在部署。");
+        } catch (error) {
+            setStatus(error instanceof Error ? error.message : "发布失败");
+        } finally {
+            setIsPublishing(false);
         }
     }
 
@@ -722,6 +751,10 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
                     <button type="button" className={styles.primaryButton} onClick={saveConfig} disabled={isSaving}>
                         <Save size={16} />
                         保存并应用
+                    </button>
+                    <button type="button" onClick={publishSite} disabled={isSaving || isPublishing}>
+                        <Rocket size={16} />
+                        {isPublishing ? "发布中..." : "Publish"}
                     </button>
                     <a href={pathname.replace(/^\/admin/, "") || "/"} target="_blank">
                         <ExternalLink size={16} />
