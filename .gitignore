@@ -1,0 +1,10 @@
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+frontend/.visual-check/
+frontend/.static-disabled/
+frontend/.static-build/
+frontend/public/uploads/20260518032135-c67d2002-simulacrum.mp4
+frontend/public/uploads/20260518032120-1864cabf-simulacrum_subtitles.mp4
+frontend/public/uploads/20260518073103-afa77aec-reroll.mp4
+frontend/data/site-config.history.jsonl

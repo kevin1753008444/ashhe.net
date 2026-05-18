@@ -1,0 +1,732 @@
+.consoleButton {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Fragment Mono Local", monospace;
+    font-size: 12px;
+    padding: 0 14px;
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
+}
+
+.consoleDrawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    display: grid;
+    width: min(470px, 94vw);
+    grid-template-rows: auto auto auto 1fr;
+    overflow: hidden;
+    border-left: 1px solid #d8d8d8;
+    background: rgba(247, 247, 247, 0.96);
+    color: #111;
+    font-family: "Alliance", "Manrope Local", sans-serif;
+    transform: translateX(100%);
+    transition: transform 240ms cubic-bezier(0.44, 0, 0.56, 1);
+    backdrop-filter: blur(20px);
+    box-shadow: -24px 0 70px rgba(0, 0, 0, 0.22);
+}
+
+.consoleDrawer.open {
+    transform: translateX(0);
+}
+
+.drawerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dedede;
+    background: #fff;
+    padding: 14px 14px 12px;
+}
+
+.drawerHeader div {
+    display: grid;
+    gap: 3px;
+}
+
+.drawerHeader strong {
+    font-family: "Fragment Mono Local", monospace;
+    font-size: 17px;
+}
+
+.drawerHeader span {
+    color: #606060;
+    font-size: 12px;
+}
+
+.drawerHeader button,
+.drawerActions button,
+.drawerActions a,
+.tabbar button,
+.presetButton,
+.uploadBox label,
+.uploadBox button,
+.mediaRowActions label,
+.dangerButton,
+.libraryItem button,
+.sectionTabs button,
+.blockItem button,
+.addBlockPanel button,
+.panelHeader button,
+.panelHeader label,
+.projectItem button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 34px;
+    border: 1px solid #d2d2d2;
+    border-radius: 6px;
+    background: #fff;
+    color: #111;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+.drawerHeader .closeButton {
+    width: auto;
+    min-width: 74px;
+    padding: 0 10px;
+}
+
+.drawerActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 10px 14px;
+}
+
+.primaryButton {
+    border-color: #111 !important;
+    background: #111 !important;
+    color: #fff !important;
+}
+
+.primaryButton:disabled {
+    cursor: wait;
+    opacity: 0.52;
+}
+
+.tabbar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 10px 14px;
+}
+
+.tabbar button {
+    min-height: 32px;
+    padding: 0 6px;
+    font-size: 11px;
+}
+
+.activeTab {
+    border-color: #111 !important;
+    background: #111 !important;
+    color: #fff !important;
+}
+
+.editorPanel {
+    overflow-y: auto;
+    padding: 16px 14px 24px;
+}
+
+.stack {
+    display: grid;
+    gap: 14px;
+}
+
+.stack h1 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 0;
+}
+
+.stack hr {
+    width: 100%;
+    height: 1px;
+    border: 0;
+    background: #dedede;
+}
+
+.field,
+.rangeField {
+    display: grid;
+    gap: 7px;
+}
+
+.field span,
+.rangeField span {
+    color: #505050;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.field input,
+.field textarea,
+.field select,
+.uploadBox select,
+.rangeField input[type="number"] {
+    width: 100%;
+    border: 1px solid #d4d4d4;
+    border-radius: 6px;
+    background: #fff;
+    color: #111;
+    font: inherit;
+    font-size: 13px;
+}
+
+.field input,
+.field select,
+.uploadBox select,
+.rangeField input[type="number"] {
+    height: 36px;
+    padding: 0 9px;
+}
+
+.field textarea {
+    resize: vertical;
+    padding: 9px;
+    line-height: 1.45;
+}
+
+.rangeField {
+    grid-template-columns: 112px minmax(100px, 1fr) 72px 24px;
+    align-items: center;
+}
+
+.rangeField input[type="range"] {
+    width: 100%;
+}
+
+.rangeField em {
+    color: #6b6b6b;
+    font-style: normal;
+    font-size: 11px;
+}
+
+.presetButton {
+    min-height: 38px;
+}
+
+.sectionTabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.sectionTabs button {
+    min-width: 34px;
+    padding: 0 9px;
+}
+
+.uploadBox {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: center;
+    border: 1px dashed #bdbdbd;
+    border-radius: 8px;
+    background: #f8f8f8;
+    padding: 10px;
+}
+
+.uploadBox p {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: #606060;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.uploadBox select:disabled,
+.uploadBox input:disabled,
+.uploadBox button:disabled,
+.uploadBox label[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.46;
+}
+
+.embedBox {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+}
+
+.embedEditor {
+    display: grid;
+    gap: 10px;
+    border: 1px dashed #bdbdbd;
+    border-radius: 8px;
+    background: #f8f8f8;
+    padding: 10px;
+}
+
+.embedEditor p {
+    margin: 0;
+    color: #606060;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.currentEmbedUrl {
+    display: grid;
+    gap: 5px;
+}
+
+.currentEmbedUrl span {
+    color: #505050;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.currentEmbedUrl code {
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #fff;
+    color: #555;
+    font-family: "Fragment Mono Local", monospace;
+    font-size: 11px;
+    padding: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.embedBox input {
+    min-width: 0;
+    height: 36px;
+    border: 1px solid #d4d4d4;
+    border-radius: 6px;
+    background: #fff;
+    color: #111;
+    font: inherit;
+    font-size: 13px;
+    padding: 0 9px;
+}
+
+.embedBox button {
+    min-height: 36px;
+    border: 1px solid #d2d2d2;
+    border-radius: 6px;
+    background: #fff;
+    color: #111;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+.blockList {
+    display: grid;
+    gap: 8px;
+}
+
+.blockList > span,
+.addBlockPanel > span {
+    color: #505050;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.projectManager {
+    display: grid;
+    gap: 8px;
+}
+
+.panelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.panelHeader > span {
+    color: #505050;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.projectList {
+    display: grid;
+    gap: 8px;
+}
+
+.projectItem {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+}
+
+.coverEditor {
+    display: grid;
+    gap: 10px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px;
+}
+
+.coverEditor label {
+    position: relative;
+    overflow: hidden;
+}
+
+.coverEditor input[type="file"] {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.coverPreview {
+    display: grid;
+    overflow: hidden;
+    height: 170px;
+    place-items: center;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    background: #f4f4f4;
+}
+
+.coverPreview img,
+.coverPreview video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.coverNote {
+    margin: 0;
+    color: #606060;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.projectItem > button:first-child {
+    display: grid;
+    justify-content: stretch;
+    min-height: 50px;
+    text-align: left;
+}
+
+.projectItem strong,
+.projectItem small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.projectItem small {
+    color: #666;
+    font-size: 11px;
+}
+
+.projectItem > div {
+    display: flex;
+    gap: 4px;
+}
+
+.projectItem > div button {
+    min-height: 50px;
+    padding: 0 7px;
+    font-size: 11px;
+}
+
+.projectItem button:disabled {
+    cursor: not-allowed;
+    opacity: 0.42;
+}
+
+.activeProject > button:first-child {
+    border-color: #111;
+    box-shadow: inset 0 0 0 1px #111;
+}
+
+.blockItem {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.blockItem > button:first-child {
+    justify-content: flex-start;
+    min-height: 48px;
+    text-align: left;
+}
+
+.blockItem strong,
+.blockItem small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.blockItem small {
+    color: #666;
+}
+
+.blockItem > div {
+    display: flex;
+    gap: 4px;
+}
+
+.blockItem > div button {
+    min-height: 48px;
+    padding: 0 7px;
+    font-size: 11px;
+}
+
+.blockItem button:disabled {
+    cursor: not-allowed;
+    opacity: 0.42;
+}
+
+.activeBlock > button:first-child {
+    border-color: #111;
+    box-shadow: inset 0 0 0 1px #111;
+}
+
+.addBlockPanel {
+    display: grid;
+    gap: 8px;
+}
+
+.addBlockPanel > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.addBlockPanel button {
+    justify-content: flex-start;
+    min-height: 36px;
+}
+
+.blockEditor {
+    display: grid;
+    gap: 14px;
+    border-top: 1px solid #dedede;
+    padding-top: 14px;
+}
+
+.blockEditor h1 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 0;
+}
+
+.uploadBox label {
+    position: relative;
+    min-height: 36px;
+    overflow: hidden;
+}
+
+.uploadBox input {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.mediaStack {
+    display: grid;
+    gap: 12px;
+}
+
+.mediaRow {
+    display: grid;
+    gap: 10px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px;
+}
+
+.mediaRowActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mediaRowActions label {
+    position: relative;
+    overflow: hidden;
+}
+
+.mediaRowActions input {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.thumb {
+    overflow: hidden;
+    width: 100%;
+    height: 118px;
+    border-radius: 6px;
+    background: #e7e7e7;
+}
+
+.thumb img,
+.thumb video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.embedThumb {
+    display: grid;
+    height: 100%;
+    align-content: center;
+    gap: 6px;
+    background: #181818;
+    color: #fff;
+    padding: 12px;
+}
+
+.embedThumb span {
+    font-family: "Fragment Mono Local", monospace;
+    font-size: 12px;
+}
+
+.embedThumb small {
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.66);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.layoutPicker {
+    display: grid;
+    gap: 8px;
+}
+
+.blockLayoutControls {
+    display: grid;
+    gap: 10px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px;
+}
+
+.blockLayoutControls > span {
+    color: #505050;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.blockLayoutControls p {
+    margin: 0;
+    color: #606060;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.dangerButton {
+    justify-self: start;
+}
+
+.mediaLibrary {
+    display: grid;
+    gap: 10px;
+}
+
+.libraryItem {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px;
+}
+
+.libraryItem .thumb {
+    height: 72px;
+}
+
+.libraryItem span,
+.libraryItem strong,
+.libraryItem code {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.libraryItem span {
+    color: #5e5e5e;
+    font-size: 12px;
+}
+
+.libraryItem strong {
+    margin: 2px 0;
+    font-size: 13px;
+}
+
+.libraryItem code {
+    color: #555;
+    font-family: "Fragment Mono Local", monospace;
+    font-size: 11px;
+}
+
+.libraryItem button {
+    grid-column: 1 / -1;
+    justify-self: start;
+}
+
+@media (max-width: 640px) {
+    .consoleButton {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .rangeField {
+        grid-template-columns: 1fr 72px 24px;
+    }
+
+    .rangeField span {
+        grid-column: 1 / -1;
+    }
+
+    .uploadBox {
+        grid-template-columns: 1fr;
+    }
+
+    .embedBox,
+    .addBlockPanel > div,
+    .blockItem,
+    .projectItem {
+        grid-template-columns: 1fr;
+    }
+
+    .blockItem > div,
+    .projectItem > div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
