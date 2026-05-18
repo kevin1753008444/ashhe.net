@@ -418,8 +418,8 @@
                     ],
                     "layout": "twoColumnText",
                     "media": [],
-                    "background": "nightGray",
-                    "textColor": "lightGray",
+                    "background": "white",
+                    "textColor": "black",
                     "meta": [
                         {
                             "label": "Role",
@@ -449,17 +449,82 @@
                             "alt": "tripo 2",
                             "fit": "cover",
                             "heightPx": 681
-                        },
+                        }
+                    ],
+                    "layout": "fullBleedMedia",
+                    "background": "white",
+                    "textColor": "black"
+                },
+                {
+                    "kicker": "01",
+                    "title": "Text/Image to 3D Model",
+                    "body": [],
+                    "media": [],
+                    "layout": "twoColumnText",
+                    "minHeightPx": 0,
+                    "paddingTopPx": 16,
+                    "paddingBottomPx": 17,
+                    "background": "white",
+                    "textColor": "black"
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
                         {
                             "type": "video",
-                            "src": "/uploads/20260518223813-fa6f7fb5-3d1.mp4",
+                            "src": "/uploads/20260518224259-c4b31922-3d1.mp4",
                             "alt": "3d1",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518224345-6a7649d1-tripo-4.png",
+                            "alt": "tripo 4",
                             "fit": "cover",
                             "heightPx": 681
                         }
                     ],
                     "layout": "fullBleedMedia",
+                    "background": "lightGray",
+                    "textColor": "black"
+                },
+                {
+                    "kicker": "02",
+                    "title": "AI Model Segment",
+                    "body": [],
+                    "media": [],
+                    "layout": "twoColumnText",
+                    "minHeightPx": 0,
+                    "paddingTopPx": 16,
+                    "paddingBottomPx": 16,
                     "background": "white",
+                    "textColor": "black"
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518224453-eba635b5-1.mp4",
+                            "alt": "1",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518224501-144f8f78-2.mp4",
+                            "alt": "2",
+                            "fit": "cover",
+                            "heightPx": 681
+                        }
+                    ],
+                    "layout": "fullBleedMedia",
+                    "background": "lightGray",
                     "textColor": "black"
                 }
             ],
@@ -472,7 +537,7 @@
             },
             "detailBlocksMigrated": true,
             "homeTitleColor": "black",
-            "caseBackground": "nightGray"
+            "caseBackground": "lightGray"
         },
         {
             "slug": "harvard_xr_visual_system",
