@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
     title: "Yiqi's hub",
     description: "Product Design",
+    icons: {
+        icon: "/favicon.svg",
+    },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -124,7 +124,7 @@
 
 .tabbar {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 6px;
     border-bottom: 1px solid #e2e2e2;
     padding: 10px 14px;

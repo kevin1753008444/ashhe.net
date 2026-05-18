@@ -14,16 +14,20 @@ function formatDate(date: Date): string {
 }
 
 export function LiveClock({ location }: { location: string }) {
-    const [now, setNow] = useState(() => new Date());
+    const [now, setNow] = useState<Date | null>(null);
 
     useEffect(() => {
+        const initialTimer = window.setTimeout(() => setNow(new Date()), 0);
         const timer = window.setInterval(() => setNow(new Date()), 30_000);
-        return () => window.clearInterval(timer);
+        return () => {
+            window.clearTimeout(initialTimer);
+            window.clearInterval(timer);
+        };
     }, []);
 
     return (
         <div className="clockBlock" aria-label="Current date and location">
-            <div>{formatDate(now)}</div>
+            <div>{now ? formatDate(now) : "\u00a0"}</div>
             <div>{location}</div>
         </div>
     );

@@ -3,9 +3,31 @@ import type { Profile, Project } from "@/data/site-types";
 import { LiveClock } from "./LiveClock";
 import { ScrambleName } from "./ScrambleName";
 
-export function Sidebar({ profile, projects, adminMode = false }: { profile: Profile; projects: Project[]; adminMode?: boolean }) {
+export function Sidebar({
+    profile,
+    projects,
+    adminMode = false,
+    menuOpen = false,
+    onToggleMenu,
+    onCloseMenu,
+}: {
+    profile: Profile;
+    projects: Project[];
+    adminMode?: boolean;
+    menuOpen?: boolean;
+    onToggleMenu?: () => void;
+    onCloseMenu?: () => void;
+}) {
     return (
-        <aside className="sidebar">
+        <>
+            <header className="mobileTopbar">
+                <ScrambleName name={profile.name} href={adminMode ? "/admin" : "/"} />
+                <button type="button" className="mobileMenuButton" aria-label="Toggle menu" aria-expanded={menuOpen} onClick={onToggleMenu}>
+                    <span />
+                    <span />
+                </button>
+            </header>
+            <aside className="sidebar">
             <div>
                 <ScrambleName name={profile.name} href={adminMode ? "/admin" : "/"} />
                 <div className="profileIntro">
@@ -17,7 +39,7 @@ export function Sidebar({ profile, projects, adminMode = false }: { profile: Pro
                     {projects.map((project) => {
                         const href = `${adminMode ? "/admin" : ""}/${project.slug}`;
                         return (
-                            <Link className="projectNavItem" href={href} key={project.slug}>
+                            <Link className="projectNavItem" href={href} key={project.slug} onClick={onCloseMenu}>
                                 <span>{project.navTitle}</span>
                                 <span>{project.year}</span>
                             </Link>
@@ -26,6 +48,7 @@ export function Sidebar({ profile, projects, adminMode = false }: { profile: Pro
                 </nav>
             </div>
             <LiveClock location={profile.location} />
-        </aside>
+            </aside>
+        </>
     );
 }

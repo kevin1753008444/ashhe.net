@@ -45,6 +45,27 @@
             "mediaGapY": 5,
             "mediaGapX": 8,
             "mediaCardMinHeight": 681
+        },
+        "responsive": {
+            "compactBreakpoint": 1500,
+            "mobileBreakpoint": 760,
+            "compactSidebarWidthVw": 26,
+            "compactSidebarMinWidth": 300,
+            "compactSidebarPaddingX": 24,
+            "compactSidebarNameSize": 30,
+            "compactSidebarIntroSize": 15,
+            "compactSidebarNavSize": 14,
+            "compactSidebarNavGap": 18,
+            "compactGalleryScale": 0.82,
+            "mobileHeaderHeight": 88,
+            "mobilePagePadding": 0,
+            "mobileMenuPadding": 30,
+            "mobileMenuNameSize": 36,
+            "mobileMenuIntroSize": 20,
+            "mobileMenuNavSize": 20,
+            "mobileTileHeight": 560,
+            "mobileTileGap": 8,
+            "mobileTilePadding": 18
         }
     },
     "projects": [
@@ -80,15 +101,32 @@
                 },
                 {
                     "kicker": "",
-                    "title": "Oreo Agentic UI",
+                    "title": "Reroll - AI Short Film",
                     "body": [
-                        "Role · Product Designer",
-                        "Timeline · 2025",
-                        "Placeholder case study route for future personal content."
+                        "When you're rolling the dice on AI video generation, what are the AI characters thinking?  Inspired by the hallucinations that come after too many re-rolls. ^_^"
                     ],
                     "layout": "twoColumnText",
                     "media": [],
                     "background": "white",
+                    "textColor": "black",
+                    "paddingTopPx": 40,
+                    "paddingBottomPx": 40,
+                    "minHeightPx": 203
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "embed",
+                            "src": "https://youtu.be/eSvjkgrX2NA",
+                            "alt": "外部视频",
+                            "fit": "cover"
+                        }
+                    ],
+                    "layout": "embedMedia",
+                    "background": "lightGray",
                     "textColor": "black"
                 }
             ],
@@ -147,7 +185,8 @@
                     "kicker": "",
                     "title": "Simulacrum - AI Film",
                     "body": [
-                        "A journalist is assigned to cover the growing protests against Simulacrum — a simulation game where every person on Earth has an identical virtual counterpart. When the reclusive developer refuses all interviews, an unexpected invitation arrives: from his virtual double, inside the game. He says he has a story to tell. And that she already knows the first half.",
+                        "A journalist is assigned to cover the growing protests against Simulacrum — a simulation game where every person on Earth has an identical virtual counterpart.",
+                        "When the reclusive developer refuses all interviews, an unexpected invitation arrives: from his virtual double, inside the game. He says he has a story to tell. And that she already knows the first half.",
                         "Role: Director, 2 People",
                         "Timeline: 2026"
                     ],
@@ -157,7 +196,7 @@
                     "paddingTopPx": 20,
                     "paddingBottomPx": 20,
                     "background": "white",
-                    "textColor": "black"
+                    "textColor": "nightGray"
                 },
                 {
                     "kicker": "",

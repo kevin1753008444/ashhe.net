@@ -15,6 +15,7 @@ export async function readSiteConfig(): Promise<SiteConfig> {
 function normalizeSiteConfig(config: SiteConfig): SiteConfig {
     const caseStudy = config.design.caseStudy;
     const home = config.design.home;
+    const responsive = config.design.responsive;
     const defaultMediaHeight = caseStudy.mediaCardMinHeight ?? 420;
 
     return {
@@ -27,6 +28,27 @@ function normalizeSiteConfig(config: SiteConfig): SiteConfig {
                 titleSize: home.titleSize ?? 16,
                 titleBottom: home.titleBottom ?? 24,
                 hoverOpacity: home.hoverOpacity ?? 20,
+            },
+            responsive: {
+                compactBreakpoint: responsive?.compactBreakpoint ?? 1500,
+                mobileBreakpoint: responsive?.mobileBreakpoint ?? 760,
+                compactSidebarWidthVw: responsive?.compactSidebarWidthVw ?? 26,
+                compactSidebarMinWidth: responsive?.compactSidebarMinWidth ?? 300,
+                compactSidebarPaddingX: responsive?.compactSidebarPaddingX ?? 24,
+                compactSidebarNameSize: responsive?.compactSidebarNameSize ?? 30,
+                compactSidebarIntroSize: responsive?.compactSidebarIntroSize ?? 15,
+                compactSidebarNavSize: responsive?.compactSidebarNavSize ?? 14,
+                compactSidebarNavGap: responsive?.compactSidebarNavGap ?? 18,
+                compactGalleryScale: responsive?.compactGalleryScale ?? 0.82,
+                mobileHeaderHeight: responsive?.mobileHeaderHeight ?? 88,
+                mobilePagePadding: responsive?.mobilePagePadding ?? 0,
+                mobileMenuPadding: responsive?.mobileMenuPadding ?? 30,
+                mobileMenuNameSize: responsive?.mobileMenuNameSize ?? 36,
+                mobileMenuIntroSize: responsive?.mobileMenuIntroSize ?? 20,
+                mobileMenuNavSize: responsive?.mobileMenuNavSize ?? 20,
+                mobileTileHeight: responsive?.mobileTileHeight ?? 560,
+                mobileTileGap: responsive?.mobileTileGap ?? 8,
+                mobileTilePadding: responsive?.mobileTilePadding ?? 18,
             },
             caseStudy: {
                 ...caseStudy,

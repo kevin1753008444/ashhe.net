@@ -7,7 +7,7 @@ import type { ChangeEvent } from "react";
 import type { BlockColor, CaseStudySection, MediaAsset, Project, SiteConfig } from "@/data/site-types";
 import styles from "./AdminEditor.module.css";
 
-type Tab = "content" | "sidebar" | "home" | "case" | "media";
+type Tab = "content" | "sidebar" | "home" | "responsive" | "case" | "media";
 type UploadTarget = "cover" | "section";
 
 const tabs: { id: Tab; label: string }[] = [
@@ -17,6 +17,8 @@ const tabs: { id: Tab; label: string }[] = [
     { id: "case", label: "详情页" },
     { id: "media", label: "媒体" },
 ];
+
+tabs.splice(3, 0, { id: "responsive", label: "自适应" });
 
 const blockOptions: { value: CaseStudySection["layout"]; label: string; description: string; defaultMedia: number }[] = [
     { value: "hero", label: "详情页 Hero 大图", description: "详情页开头的大图 / 视频，也是一个可排序的 Block。", defaultMedia: 1 },
@@ -851,6 +853,35 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
                             <RangeField label="作品标题字号" value={config.design.home.titleSize ?? 16} min={10} max={36} onChange={(value) => updateConfig((draft) => { draft.design.home.titleSize = value; })} />
                             <RangeField label="作品标题底部间距" value={config.design.home.titleBottom ?? 24} min={0} max={120} onChange={(value) => updateConfig((draft) => { draft.design.home.titleBottom = value; })} />
                             <RangeField label="Hover 蒙层透明度" value={config.design.home.hoverOpacity ?? 20} min={0} max={80} unit="%" onChange={(value) => updateConfig((draft) => { draft.design.home.hoverOpacity = value; })} />
+                        </div>
+                    )}
+
+                    {activeTab === "responsive" && (
+                        <div className={styles.stack}>
+                            <h1>自适应</h1>
+                            <RangeField label="压缩模式开始宽度" value={config.design.responsive.compactBreakpoint} min={900} max={2200} onChange={(value) => updateConfig((draft) => { draft.design.responsive.compactBreakpoint = value; })} />
+                            <RangeField label="竖屏模式开始宽度" value={config.design.responsive.mobileBreakpoint} min={420} max={1100} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobileBreakpoint = value; })} />
+                            <hr />
+                            <h1>压缩模式</h1>
+                            <RangeField label="侧栏宽度" value={config.design.responsive.compactSidebarWidthVw} min={18} max={34} unit="vw" onChange={(value) => updateConfig((draft) => { draft.design.responsive.compactSidebarWidthVw = value; })} />
+                            <RangeField label="侧栏最小宽度" value={config.design.responsive.compactSidebarMinWidth} min={220} max={440} onChange={(value) => updateConfig((draft) => { draft.design.responsive.compactSidebarMinWidth = value; })} />
+                            <RangeField label="侧栏左右边距" value={config.design.responsive.compactSidebarPaddingX} min={12} max={60} onChange={(value) => updateConfig((draft) => { draft.design.responsive.compactSidebarPaddingX = value; })} />
+                            <RangeField label="姓名字号" value={config.design.responsive.compactSidebarNameSize} min={20} max={48} onChange={(value) => updateConfig((draft) => { draft.design.responsive.compactSidebarNameSize = value; })} />
+                            <RangeField label="简介字号" value={config.design.responsive.compactSidebarIntroSize} min={11} max={28} onChange={(value) => updateConfig((draft) => { draft.design.responsive.compactSidebarIntroSize = value; })} />
+                            <RangeField label="作品字号" value={config.design.responsive.compactSidebarNavSize} min={11} max={24} onChange={(value) => updateConfig((draft) => { draft.design.responsive.compactSidebarNavSize = value; })} />
+                            <RangeField label="作品行距" value={config.design.responsive.compactSidebarNavGap} min={8} max={34} onChange={(value) => updateConfig((draft) => { draft.design.responsive.compactSidebarNavGap = value; })} />
+                            <RangeField label="Gallery 整体缩放" value={config.design.responsive.compactGalleryScale} min={0.65} max={1} step={0.01} unit="x" onChange={(value) => updateConfig((draft) => { draft.design.responsive.compactGalleryScale = value; })} />
+                            <hr />
+                            <h1>竖屏模式</h1>
+                            <RangeField label="顶部栏高度" value={config.design.responsive.mobileHeaderHeight} min={58} max={130} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobileHeaderHeight = value; })} />
+                            <RangeField label="页面边距" value={config.design.responsive.mobilePagePadding} min={0} max={40} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobilePagePadding = value; })} />
+                            <RangeField label="菜单内边距" value={config.design.responsive.mobileMenuPadding} min={14} max={64} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobileMenuPadding = value; })} />
+                            <RangeField label="菜单姓名字号" value={config.design.responsive.mobileMenuNameSize} min={24} max={58} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobileMenuNameSize = value; })} />
+                            <RangeField label="菜单简介字号" value={config.design.responsive.mobileMenuIntroSize} min={13} max={32} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobileMenuIntroSize = value; })} />
+                            <RangeField label="菜单作品字号" value={config.design.responsive.mobileMenuNavSize} min={14} max={32} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobileMenuNavSize = value; })} />
+                            <RangeField label="单列作品高度" value={config.design.responsive.mobileTileHeight} min={320} max={900} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobileTileHeight = value; })} />
+                            <RangeField label="单列作品间距" value={config.design.responsive.mobileTileGap} min={0} max={32} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobileTileGap = value; })} />
+                            <RangeField label="封面完整显示边距" value={config.design.responsive.mobileTilePadding} min={0} max={60} onChange={(value) => updateConfig((draft) => { draft.design.responsive.mobileTilePadding = value; })} />
                         </div>
                     )}
 

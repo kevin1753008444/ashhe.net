@@ -96,10 +96,33 @@ export type CaseStudyDesign = {
     mediaCardMinHeight: number;
 };
 
+export type ResponsiveDesign = {
+    compactBreakpoint: number;
+    mobileBreakpoint: number;
+    compactSidebarWidthVw: number;
+    compactSidebarMinWidth: number;
+    compactSidebarPaddingX: number;
+    compactSidebarNameSize: number;
+    compactSidebarIntroSize: number;
+    compactSidebarNavSize: number;
+    compactSidebarNavGap: number;
+    compactGalleryScale: number;
+    mobileHeaderHeight: number;
+    mobilePagePadding: number;
+    mobileMenuPadding: number;
+    mobileMenuNameSize: number;
+    mobileMenuIntroSize: number;
+    mobileMenuNavSize: number;
+    mobileTileHeight: number;
+    mobileTileGap: number;
+    mobileTilePadding: number;
+};
+
 export type DesignSettings = {
     sidebar: SidebarDesign;
     home: HomeDesign;
     caseStudy: CaseStudyDesign;
+    responsive: ResponsiveDesign;
 };
 
 export type SiteConfig = {
