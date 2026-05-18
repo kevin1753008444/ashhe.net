@@ -25,6 +25,7 @@ function normalizeSiteConfig(config: SiteConfig): SiteConfig {
             ...config.design,
             home: {
                 ...home,
+                tileAspectRatio: home.tileAspectRatio ?? 1,
                 titleSize: home.titleSize ?? 16,
                 titleBottom: home.titleBottom ?? 24,
                 hoverOpacity: home.hoverOpacity ?? 20,
@@ -75,6 +76,7 @@ function normalizeMedia(media: MediaAsset, defaultMediaHeight: number): MediaAss
     return {
         ...media,
         heightPx: media.heightPx ?? defaultMediaHeight,
+        fallbackImage: media.fallbackImage ? normalizeMedia(media.fallbackImage, defaultMediaHeight) : undefined,
     };
 }
 
@@ -114,15 +116,14 @@ function createHeroSection(project: Project): CaseStudySection {
 }
 
 function createIntroSection(project: Project): CaseStudySection {
-    const details = [
-        project.role ? `Role · ${project.role}` : "",
-        project.timeline ? `Timeline · ${project.timeline}` : "",
-    ].filter(Boolean);
-
     return {
         kicker: "",
         title: project.title,
-        body: [...details, ...project.summary],
+        meta: [
+            ...(project.role ? [{ label: "Role", value: project.role }] : []),
+            ...(project.timeline ? [{ label: "Timeline", value: project.timeline }] : []),
+        ],
+        body: [...project.summary],
         layout: "twoColumnText",
         media: [],
         minHeightPx: 0,
@@ -131,18 +132,55 @@ function createIntroSection(project: Project): CaseStudySection {
     };
 }
 
+function splitLegacyMeta(section: CaseStudySection, project: Project) {
+    if (section.meta?.length) {
+        return {
+            meta: section.meta,
+            body: section.body,
+        };
+    }
+
+    const meta: NonNullable<CaseStudySection["meta"]> = [];
+    const body: string[] = [];
+
+    section.body.forEach((paragraph) => {
+        const match = paragraph.match(/^(Role|Timeline)\s*(?:[·:路]|-)\s*(.+)$/i);
+        if (match?.[1] && match[2]) {
+            meta.push({ label: match[1], value: match[2].trim() });
+            return;
+        }
+
+        body.push(paragraph);
+    });
+
+    if (meta.length === 0 && section.layout === "twoColumnText" && section.title === project.title) {
+        if (project.role) {
+            meta.push({ label: "Role", value: project.role });
+        }
+        if (project.timeline) {
+            meta.push({ label: "Timeline", value: project.timeline });
+        }
+    }
+
+    return { meta, body };
+}
+
 function normalizeProject(project: Project, defaultMediaHeight: number): Project {
-    const sections = project.sections.map((section) => ({
-        ...section,
-        background: normalizeBlockColor(
-            section.background,
-            section.layout === "hero" || section.layout === "singleMedia" || section.layout === "embedMedia" ? "lightGray" : "white",
-        ),
-        textColor: normalizeTextColor(section.textColor),
-        media: section.layout === "hero"
-            ? section.media
-            : section.media.map((media) => normalizeMedia(media, defaultMediaHeight)),
-    }));
+    const sections = project.sections.map((section) => {
+        const legacyText = splitLegacyMeta(section, project);
+
+        return {
+            ...section,
+            body: legacyText.body,
+            meta: legacyText.meta,
+            background: normalizeBlockColor(
+                section.background,
+                section.layout === "hero" || section.layout === "singleMedia" || section.layout === "embedMedia" ? "lightGray" : "white",
+            ),
+            textColor: normalizeTextColor(section.textColor),
+            media: section.media.map((media) => normalizeMedia(media, defaultMediaHeight)),
+        };
+    });
     const shouldMigrateDetailBlocks = !project.detailBlocksMigrated;
     const hasHeroBlock = sections.some((section) => section.layout === "hero");
     const hasIntroBlock = sections.some((section) => section.layout === "twoColumnText" && section.title === project.title);
@@ -151,10 +189,11 @@ function normalizeProject(project: Project, defaultMediaHeight: number): Project
         ...project,
         detailBlocksMigrated: true,
         homeTitleColor: project.homeTitleColor ?? "black",
-        homeCoverMedia: project.homeCoverMedia ?? {
+        caseBackground: project.caseBackground ?? "white",
+        homeCoverMedia: normalizeMedia(project.homeCoverMedia ?? {
             ...project.coverMedia,
             fit: "cover",
-        },
+        }, defaultMediaHeight),
         coverMedia: normalizeMedia(project.coverMedia, defaultMediaHeight),
         sections: [
             ...(!shouldMigrateDetailBlocks || hasHeroBlock ? [] : [createHeroSection(project)]),

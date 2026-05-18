@@ -8,6 +8,9 @@ export function VideoHover({ media, className = "", style }: { media: MediaAsset
     const videoRef = useRef<HTMLVideoElement>(null);
     const retryCount = useRef(0);
     const [shouldLoad, setShouldLoad] = useState(false);
+    const [isReady, setIsReady] = useState(false);
+    const [hasFailed, setHasFailed] = useState(false);
+    const objectFit = style?.objectFit ?? media.fit ?? "cover";
 
     useEffect(() => {
         const element = videoRef.current;
@@ -40,12 +43,16 @@ export function VideoHover({ media, className = "", style }: { media: MediaAsset
             return;
         }
 
+        setHasFailed(false);
         void element.play().catch(() => {
             // Browsers may delay autoplay until the video is ready or visible.
         });
     }, [shouldLoad, media.src]);
 
     function retryLoad() {
+        setHasFailed(true);
+        setIsReady(false);
+
         if (retryCount.current >= 1) {
             return;
         }
@@ -56,23 +63,29 @@ export function VideoHover({ media, className = "", style }: { media: MediaAsset
     }
 
     return (
-        <video
-            ref={videoRef}
-            className={className}
-            src={shouldLoad ? media.src : undefined}
-            muted
-            loop
-            autoPlay
-            playsInline
-            preload={shouldLoad ? "metadata" : "none"}
-            style={style}
-            aria-label={media.alt}
-            onCanPlay={() => {
-                if (videoRef.current) {
-                    void videoRef.current.play().catch(() => undefined);
-                }
-            }}
-            onError={retryLoad}
-        />
+        <span className={`${className} videoFrame`} style={{ ...style, objectFit }}>
+            {media.fallbackImage && (!isReady || hasFailed) && (
+                <img className="videoFallbackObject" src={media.fallbackImage.src} alt={media.fallbackImage.alt || media.alt} loading="eager" />
+            )}
+            <video
+                ref={videoRef}
+                className="videoFrameObject"
+                src={shouldLoad ? media.src : undefined}
+                muted
+                loop
+                autoPlay
+                playsInline
+                preload={shouldLoad ? "metadata" : "none"}
+                aria-label={media.alt}
+                onCanPlay={() => {
+                    setIsReady(true);
+                    setHasFailed(false);
+                    if (videoRef.current) {
+                        void videoRef.current.play().catch(() => undefined);
+                    }
+                }}
+                onError={retryLoad}
+            />
+        </span>
     );
 }

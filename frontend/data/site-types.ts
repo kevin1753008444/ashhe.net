@@ -5,6 +5,7 @@ export type MediaAsset = {
     widthPercent?: number;
     heightPx?: number;
     fit?: "cover" | "contain";
+    fallbackImage?: MediaAsset;
 };
 
 export type BlockColor = "white" | "lightGray" | "midGray" | "nightGray" | "black";
@@ -18,8 +19,14 @@ export type CaseStudySection = {
     paddingTopPx?: number;
     paddingBottomPx?: number;
     paddingX?: number;
+    letterSpacingPx?: number;
+    lineHeight?: number;
     background?: BlockColor | "paper" | "canvas";
     textColor?: BlockColor;
+    meta?: {
+        label: string;
+        value: string;
+    }[];
     layout:
         | "hero"
         | "twoColumnText"
@@ -44,6 +51,7 @@ export type Project = {
     coverMedia: MediaAsset;
     homeCoverMedia?: MediaAsset;
     homeTitleColor?: BlockColor;
+    caseBackground?: BlockColor;
     sections: CaseStudySection[];
     accentTheme: "willow" | "ios" | "tiktok" | "dark" | "placeholder";
     implemented: boolean;
@@ -72,6 +80,7 @@ export type SidebarDesign = {
 
 export type HomeDesign = {
     tileHeight: number;
+    tileAspectRatio?: number;
     tileGap: number;
     mediaScale: number;
     desktopPreviewWidth: number;

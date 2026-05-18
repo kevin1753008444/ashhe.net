@@ -38,6 +38,8 @@ function getSectionStyle(section: Project["sections"][number], index: number) {
         "--block-padding-top": index === 0 ? "0px" : section.paddingTopPx ? `${section.paddingTopPx}px` : undefined,
         "--block-padding-bottom": index === 0 ? "0px" : section.paddingBottomPx ? `${section.paddingBottomPx}px` : undefined,
         "--block-padding-x": section.paddingX ? `${section.paddingX}px` : undefined,
+        "--block-letter-spacing": `${section.letterSpacingPx ?? 0}px`,
+        "--block-line-height": section.lineHeight ?? 1.23,
         "--block-bg": resolveBlockColor(section.background, "white"),
         "--block-text": blockColorValues[section.textColor ?? "black"],
     } as CSSProperties;
@@ -64,7 +66,12 @@ function getMediaLimit(layout: Project["sections"][number]["layout"]) {
 }
 
 function hasSectionText(section: Project["sections"][number]) {
-    return Boolean(section.kicker.trim() || section.title.trim() || section.body.some((paragraph) => paragraph.trim()));
+    return Boolean(
+        section.kicker.trim()
+        || section.title.trim()
+        || section.body.some((paragraph) => paragraph.trim())
+        || section.meta?.some((item) => item.label.trim() || item.value.trim()),
+    );
 }
 
 function SectionCopy({ section }: { section: Project["sections"][number] }) {
@@ -72,11 +79,23 @@ function SectionCopy({ section }: { section: Project["sections"][number] }) {
         return null;
     }
 
+    const visibleMeta = section.meta?.filter((item) => item.label.trim() || item.value.trim()) ?? [];
+
     return (
         <div className="sectionText">
             <div>
                 <h2>{section.kicker}</h2>
                 <h3>{section.title}</h3>
+                {visibleMeta.length > 0 && (
+                    <dl className="sectionMeta">
+                        {visibleMeta.map((item, index) => (
+                            <div key={`${item.label}-${index}`}>
+                                <dt>{item.label}</dt>
+                                <dd>{item.value}</dd>
+                            </div>
+                        ))}
+                    </dl>
+                )}
             </div>
             <div>
                 {section.body.map((paragraph) => (
@@ -110,6 +129,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
     return (
         <motion.article
             className={`caseStudy theme-${project.accentTheme}`}
+            style={{ "--case-bg": blockColorValues[project.caseBackground ?? "white"] } as CSSProperties}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: [0.44, 0, 0.56, 1] }}

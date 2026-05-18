@@ -70,7 +70,7 @@
     },
     "projects": [
         {
-            "slug": "gacha",
+            "slug": "reroll",
             "title": "Oreo Agentic UI",
             "year": "2026",
             "navTitle": "Reroll",
@@ -91,8 +91,8 @@
                     "media": [
                         {
                             "type": "image",
-                            "src": "/assets/home/NZvEkLr9cul3funaB1wxEXhKM.png",
-                            "alt": "Project preview",
+                            "src": "/uploads/20260518200421-e38bfa55-_ai-00_00_16-20260518-001749.png",
+                            "alt": "_ai 00_00_16 20260518 001749",
                             "fit": "cover"
                         }
                     ],
@@ -126,6 +126,58 @@
                         }
                     ],
                     "layout": "embedMedia",
+                    "background": "lightGray",
+                    "textColor": "black"
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518201031-061b08e7-_ai-00_00_01-20260518-001719-1.png",
+                            "alt": "_ai 00_00_01 20260518 001719 1",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518201049-eb8bba24-_ai-00_00_16-20260518-001749-1.png",
+                            "alt": "_ai 00_00_16 20260518 001749 1",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518201054-8ccde61b-_ai-00_00_41-20260518-001836-1.png",
+                            "alt": "_ai 00_00_41 20260518 001836 1",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518201614-65be12d3-00_01_53-20260518-161230-1.png",
+                            "alt": "00_01_53 20260518 161230 1",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518201633-1ddbb1cb-_ai-00_02_57-20260518-002220-1.png",
+                            "alt": "_ai 00_02_57 20260518 002220 1",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518201727-9a586ed1-_ai-00_00_10-20260518-001739-1.png",
+                            "alt": "_ai 00_00_10 20260518 001739 1",
+                            "fit": "cover",
+                            "heightPx": 681
+                        }
+                    ],
+                    "layout": "fullBleedMedia",
                     "background": "lightGray",
                     "textColor": "black"
                 }
@@ -264,27 +316,21 @@
                     "media": [
                         {
                             "type": "image",
-                            "src": "/uploads/20260518031938-f5de8172-frame-2147223533.png",
+                            "src": "/uploads/20260518203446-ce47f3c7-frame-2147223533.png",
                             "alt": "frame 2147223533",
                             "fit": "cover",
-                            "heightPx": 160
+                            "heightPx": 276,
+                            "widthPercent": 100
                         },
                         {
                             "type": "image",
-                            "src": "/uploads/20260518031944-38c0aa73-frame-2147223534.png",
-                            "alt": "frame 2147223534",
-                            "fit": "cover",
-                            "heightPx": 160
-                        },
-                        {
-                            "type": "image",
-                            "src": "/uploads/20260518031946-4437861c-frame-2147223532.png",
+                            "src": "/uploads/20260518203450-212c48e8-frame-2147223532.png",
                             "alt": "frame 2147223532",
                             "fit": "cover",
-                            "heightPx": 160
+                            "heightPx": 228
                         }
                     ],
-                    "layout": "mediaGridThree",
+                    "layout": "mediaGridTwo",
                     "background": "lightGray",
                     "textColor": "black"
                 }
@@ -329,11 +375,13 @@
                             "type": "image",
                             "src": "/uploads/20260517214312-6e075337-link-variant-3.png",
                             "alt": "link variant 3",
-                            "fit": "cover"
+                            "fit": "cover",
+                            "heightPx": 493
                         }
                     ],
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "minHeightPx": 579
                 },
                 {
                     "kicker": "",

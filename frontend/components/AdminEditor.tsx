@@ -109,12 +109,17 @@ function createProject(projects: Project[]): Project {
         coverMedia: { type: "image", src: "/assets/home/MJEUzqAUYToqEzCAPoptrTsdPGI.png", alt: "Project detail hero", fit: "contain" },
         homeCoverMedia: { type: "image", src: "/assets/home/MJEUzqAUYToqEzCAPoptrTsdPGI.png", alt: "Homepage project cover", fit: "cover" },
         homeTitleColor: "black",
+        caseBackground: "white",
         sections: [
             createBlock("hero"),
             {
                 kicker: "",
                 title: "New Project",
-                body: ["Role · Product Designer", `Timeline · ${new Date().getFullYear()}`, "Write a short project summary here."],
+                meta: [
+                    { label: "Role", value: "Product Designer" },
+                    { label: "Timeline", value: new Date().getFullYear().toString() },
+                ],
+                body: ["Write a short project summary here."],
                 media: [],
                 layout: "twoColumnText",
                 minHeightPx: 0,
@@ -243,8 +248,10 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
     const selectedSection = selectedProject?.sections[selectedSectionIndex];
     const mediaReferences = useMemo(() => {
         return config.projects.flatMap((project) => {
+            const homeCover = project.homeCoverMedia ?? project.coverMedia;
             const cover = [
-                { project, media: project.homeCoverMedia ?? project.coverMedia, label: "Homepage 封面" },
+                { project, media: homeCover, label: "Homepage 封面" },
+                ...(homeCover.fallbackImage ? [{ project, media: homeCover.fallbackImage, label: "Homepage 视频兜底图" }] : []),
                 { project, media: project.coverMedia, label: "详情页 Hero" },
             ];
             const sectionMedia = project.sections.flatMap((section) =>
@@ -536,12 +543,56 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
 
         const payload = (await response.json()) as { media: MediaAsset };
         updateSelectedProject((project) => {
+            const currentFallback = project.homeCoverMedia?.fallbackImage;
             project.homeCoverMedia = {
                 ...payload.media,
                 fit: "cover",
+                ...(currentFallback ? { fallbackImage: currentFallback } : {}),
             };
         });
         setStatus(`已替换 Homepage 封面 ${payload.media.src}`);
+    }
+
+    async function uploadCoverFallbackImage(event: ChangeEvent<HTMLInputElement>) {
+        const file = event.target.files?.[0];
+        event.target.value = "";
+
+        if (!file || !selectedProject) {
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+        setStatus("正在上传 Homepage 视频兜底图...");
+
+        const response = await fetch("/api/media", {
+            method: "POST",
+            body: formData,
+        });
+
+        if (!response.ok) {
+            setStatus(await response.text());
+            return;
+        }
+
+        const payload = (await response.json()) as { media: MediaAsset };
+        if (payload.media.type !== "image") {
+            await deleteUploadedFile(payload.media.src);
+            setStatus("兜底图只能上传图片文件");
+            return;
+        }
+
+        updateSelectedProject((project) => {
+            const homeCover = project.homeCoverMedia ?? { ...project.coverMedia, fit: "cover" };
+            project.homeCoverMedia = {
+                ...homeCover,
+                fallbackImage: {
+                    ...payload.media,
+                    fit: "cover",
+                },
+            };
+        });
+        setStatus(`已上传 Homepage 视频兜底图 ${payload.media.src}`);
     }
 
     function addEmbedMedia() {
@@ -683,11 +734,22 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
                 if (project.homeCoverMedia?.src === media.src) {
                     project.homeCoverMedia = { type: "image", src: "/assets/home/MJEUzqAUYToqEzCAPoptrTsdPGI.png", alt: "Homepage project cover", fit: "cover" };
                 }
+                if (project.homeCoverMedia?.fallbackImage?.src === media.src) {
+                    delete project.homeCoverMedia.fallbackImage;
+                }
+                if (project.coverMedia.fallbackImage?.src === media.src) {
+                    delete project.coverMedia.fallbackImage;
+                }
                 if (project.coverMedia.src === media.src) {
                     project.coverMedia = { type: "image", src: "/assets/home/MJEUzqAUYToqEzCAPoptrTsdPGI.png", alt: "Project detail hero", fit: "contain" };
                 }
                 project.sections.forEach((section) => {
                     section.media = section.media.filter((item) => item.src !== media.src);
+                    section.media.forEach((item) => {
+                        if (item.fallbackImage?.src === media.src) {
+                            delete item.fallbackImage;
+                        }
+                    });
                 });
             });
         });
@@ -710,6 +772,7 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
             draft.design.home = {
                 ...draft.design.home,
                 tileHeight: 610,
+                tileAspectRatio: 1,
                 tileGap: 8,
                 mediaScale: 0.92,
                 phoneWidth: 330,
@@ -808,10 +871,22 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
                                     ))}
                                 </select>
                             </label>
+                            <label className={styles.field}>
+                                <span>详情页 Canvas 背景色</span>
+                                <select
+                                    value={selectedProject.caseBackground ?? "white"}
+                                    onChange={(event) => updateSelectedProject((project) => { project.caseBackground = event.target.value as BlockColor; })}
+                                >
+                                    {blockColorOptions.map((option) => (
+                                        <option value={option.value} key={option.value}>{option.label}</option>
+                                    ))}
+                                </select>
+                            </label>
                             <TextField label="年份" value={selectedProject.year} onChange={(value) => updateSelectedProject((project) => { project.year = value; })} />
                             <CoverMediaEditor
                                 media={selectedProject.homeCoverMedia ?? selectedProject.coverMedia}
                                 onUpload={uploadCoverMedia}
+                                onFallbackUpload={uploadCoverFallbackImage}
                                 onAltChange={(value) => updateSelectedProject((project) => {
                                     project.homeCoverMedia = {
                                         ...(project.homeCoverMedia ?? project.coverMedia),
@@ -845,6 +920,7 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
                         <div className={styles.stack}>
                             <h1>首页画布</h1>
                             <RangeField label="作品格高度" value={config.design.home.tileHeight} min={420} max={920} onChange={(value) => updateConfig((draft) => { draft.design.home.tileHeight = value; })} />
+                            <RangeField label="作品项宽高比" value={config.design.home.tileAspectRatio ?? 1} min={0.75} max={1.35} step={0.01} unit="ratio" onChange={(value) => updateConfig((draft) => { draft.design.home.tileAspectRatio = value; })} />
                             <RangeField label="格子间距" value={config.design.home.tileGap} min={0} max={24} onChange={(value) => updateConfig((draft) => { draft.design.home.tileGap = value; })} />
                             <RangeField label="媒体整体缩放" value={config.design.home.mediaScale} min={0.5} max={1.4} step={0.01} unit="x" onChange={(value) => updateConfig((draft) => { draft.design.home.mediaScale = value; })} />
                             <RangeField label="桌面图宽度" value={config.design.home.desktopPreviewWidth} min={40} max={100} unit="%" onChange={(value) => updateConfig((draft) => { draft.design.home.desktopPreviewWidth = value; })} />
@@ -1035,10 +1111,12 @@ function ProjectManager({
 function CoverMediaEditor({
     media,
     onUpload,
+    onFallbackUpload,
     onAltChange,
 }: {
     media: MediaAsset;
     onUpload: (event: ChangeEvent<HTMLInputElement>) => void;
+    onFallbackUpload: (event: ChangeEvent<HTMLInputElement>) => void;
     onAltChange: (value: string) => void;
 }) {
     return (
@@ -1055,6 +1133,21 @@ function CoverMediaEditor({
                 <MediaThumb media={media} />
             </div>
             <TextField label="封面替代文本 / 标题" value={media.alt} onChange={onAltChange} />
+            <div className={styles.panelHeader}>
+                <span>视频兜底图片</span>
+                <label>
+                    <Upload size={13} />
+                    上传兜底图片
+                    <input type="file" accept="image/*" onChange={onFallbackUpload} />
+                </label>
+            </div>
+            {media.fallbackImage ? (
+                <div className={styles.coverPreview}>
+                    <MediaThumb media={media.fallbackImage} />
+                </div>
+            ) : (
+                <p className={styles.coverNote}>如果 Homepage 封面是视频，视频还没加载好或加载失败时会先显示这张图片。</p>
+            )}
             <p className={styles.coverNote}>Homepage 封面会铺满整个格子；如果图片比例不同，会自动裁剪边缘。</p>
         </div>
     );
@@ -1167,6 +1260,10 @@ function BlockEditor({
                 <>
                     <TextField label="Block 标记 / Kicker" value={section.kicker} onChange={(value) => onUpdateSection((draft) => { draft.kicker = value; })} />
                     <TextField label="Block 标题" value={section.title} onChange={(value) => onUpdateSection((draft) => { draft.title = value; })} />
+                    <MetaEditor
+                        items={section.meta ?? []}
+                        onChange={(items) => onUpdateSection((draft) => { draft.meta = items; })}
+                    />
                     <TextAreaField label="Block 正文，每行一段" value={linesToText(section.body)} rows={7} onChange={(value) => onUpdateSection((draft) => { draft.body = textToLines(value); })} />
                 </>
             )}
@@ -1250,6 +1347,44 @@ function BlockEditor({
     );
 }
 
+function MetaEditor({
+    items,
+    onChange,
+}: {
+    items: NonNullable<CaseStudySection["meta"]>;
+    onChange: (items: NonNullable<CaseStudySection["meta"]>) => void;
+}) {
+    function updateItem(index: number, key: "label" | "value", value: string) {
+        const nextItems = items.map((item, itemIndex) => (itemIndex === index ? { ...item, [key]: value } : item));
+        onChange(nextItems);
+    }
+
+    return (
+        <div className={styles.metaEditor}>
+            <div className={styles.panelHeader}>
+                <span>标题下方信息栏</span>
+                <button type="button" onClick={() => onChange([...items, { label: "Role", value: "" }])}>
+                    <Plus size={13} />
+                    新增一项
+                </button>
+            </div>
+            {items.length === 0 ? (
+                <p className={styles.coverNote}>用于填写 Role、Timeline、People 等加粗标签信息。</p>
+            ) : (
+                items.map((item, index) => (
+                    <div className={styles.metaRow} key={`${item.label}-${index}`}>
+                        <input value={item.label} placeholder="Role" onChange={(event) => updateItem(index, "label", event.target.value)} />
+                        <input value={item.value} placeholder="Founding Product Designer" onChange={(event) => updateItem(index, "value", event.target.value)} />
+                        <button type="button" className={styles.dangerButton} onClick={() => onChange(items.filter((_, itemIndex) => itemIndex !== index))}>
+                            <Trash2 size={14} />
+                        </button>
+                    </div>
+                ))
+            )}
+        </div>
+    );
+}
+
 function LayoutPicker({ value, onChange }: { value: CaseStudySection["layout"]; onChange: (value: CaseStudySection["layout"]) => void }) {
     return (
         <div className={styles.layoutPicker}>
@@ -1318,6 +1453,23 @@ function BlockLayoutControls({
                 min={0}
                 max={160}
                 onChange={(value) => onUpdateSection((draft) => { draft.paddingX = value; })}
+            />
+            <RangeField
+                label="文字字间距"
+                value={section.letterSpacingPx ?? 0}
+                min={0}
+                max={8}
+                step={0.1}
+                onChange={(value) => onUpdateSection((draft) => { draft.letterSpacingPx = value; })}
+            />
+            <RangeField
+                label="文字行间距"
+                value={section.lineHeight ?? 1.23}
+                min={0.85}
+                max={2}
+                step={0.01}
+                unit="x"
+                onChange={(value) => onUpdateSection((draft) => { draft.lineHeight = value; })}
             />
             <label className={styles.field}>
                 <span>背景色</span>

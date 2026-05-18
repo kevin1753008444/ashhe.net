@@ -21,6 +21,7 @@ function getDesignVars(config: SiteConfig) {
         "--sidebar-intro-gap": `${sidebar.introGap}px`,
         "--sidebar-clock-size": `${sidebar.clockSize}px`,
         "--home-tile-height": `${home.tileHeight}px`,
+        "--home-tile-aspect-ratio": home.tileAspectRatio ?? 1,
         "--home-tile-gap": `${home.tileGap}px`,
         "--home-media-scale": home.mediaScale,
         "--home-desktop-preview-width": `${home.desktopPreviewWidth}%`,
