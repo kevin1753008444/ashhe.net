@@ -964,6 +964,18 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
                     {activeTab === "case" && selectedProject && (
                         <div className={styles.stack}>
                             <h1>详情页全局样式</h1>
+                            <ProjectPicker projects={config.projects} selectedProjectSlug={selectedProjectSlug} onSelect={selectProject} />
+                            <label className={styles.field}>
+                                <span>当前作品详情页 Canvas 背景色</span>
+                                <select
+                                    value={selectedProject.caseBackground ?? "white"}
+                                    onChange={(event) => updateSelectedProject((project) => { project.caseBackground = event.target.value as BlockColor; })}
+                                >
+                                    {blockColorOptions.map((option) => (
+                                        <option value={option.value} key={option.value}>{option.label}</option>
+                                    ))}
+                                </select>
+                            </label>
                             <RangeField label="默认 Hero 高度" value={config.design.caseStudy.heroHeightVh} min={40} max={100} unit="vh" onChange={(value) => updateConfig((draft) => { draft.design.caseStudy.heroHeightVh = value; })} />
                             <RangeField label="章节块上下边距" value={config.design.caseStudy.sectionPaddingY} min={20} max={240} onChange={(value) => updateConfig((draft) => { draft.design.caseStudy.sectionPaddingY = value; })} />
                             <RangeField label="章节块左右边距" value={config.design.caseStudy.sectionPaddingX} min={0} max={120} onChange={(value) => updateConfig((draft) => { draft.design.caseStudy.sectionPaddingX = value; })} />
@@ -974,7 +986,6 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
 
                             <hr />
                             <h1>内容块编排</h1>
-                            <ProjectPicker projects={config.projects} selectedProjectSlug={selectedProjectSlug} onSelect={selectProject} />
                             <BlockList
                                 sections={selectedProject.sections}
                                 selectedIndex={selectedSectionIndex}

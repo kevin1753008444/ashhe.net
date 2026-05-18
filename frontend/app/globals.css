@@ -269,7 +269,7 @@ button {
     left: 28px;
     display: flex;
     align-items: baseline;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 18px;
     z-index: 1;
     color: var(--home-title-color);
@@ -277,7 +277,16 @@ button {
     font-size: var(--home-title-size);
     font-weight: 700;
     line-height: 1.15;
-    text-align: right;
+    opacity: 0;
+    text-align: left;
+    transform: translateY(6px);
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.projectPreviewTile:hover .projectPreviewMeta,
+.projectPreviewTile:focus-visible .projectPreviewMeta {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .projectPreviewMeta strong,

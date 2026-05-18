@@ -31,7 +31,8 @@
             "phoneMinWidth": 300,
             "titleSize": 16,
             "titleBottom": 18,
-            "hoverOpacity": 20
+            "hoverOpacity": 20,
+            "tileAspectRatio": 1
         },
         "caseStudy": {
             "heroHeightVh": 64,
@@ -93,11 +94,13 @@
                             "type": "image",
                             "src": "/uploads/20260518200421-e38bfa55-_ai-00_00_16-20260518-001749.png",
                             "alt": "_ai 00_00_16 20260518 001749",
-                            "fit": "cover"
+                            "fit": "cover",
+                            "heightPx": 681
                         }
                     ],
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
@@ -111,7 +114,8 @@
                     "textColor": "black",
                     "paddingTopPx": 40,
                     "paddingBottomPx": 40,
-                    "minHeightPx": 203
+                    "minHeightPx": 203,
+                    "meta": []
                 },
                 {
                     "kicker": "",
@@ -127,7 +131,8 @@
                     ],
                     "layout": "embedMedia",
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
@@ -179,7 +184,8 @@
                     ],
                     "layout": "fullBleedMedia",
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 }
             ],
             "accentTheme": "dark",
@@ -191,10 +197,12 @@
                 "type": "video",
                 "src": "/uploads/20260518073225-838d7259-reroll.mp4",
                 "alt": "reroll",
-                "fit": "cover"
+                "fit": "cover",
+                "heightPx": 681
             },
             "detailBlocksMigrated": true,
-            "homeTitleColor": "lightGray"
+            "homeTitleColor": "lightGray",
+            "caseBackground": "white"
         },
         {
             "slug": "simulacrum",
@@ -231,16 +239,15 @@
                         }
                     ],
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
                     "title": "Simulacrum - AI Film",
                     "body": [
                         "A journalist is assigned to cover the growing protests against Simulacrum — a simulation game where every person on Earth has an identical virtual counterpart.",
-                        "When the reclusive developer refuses all interviews, an unexpected invitation arrives: from his virtual double, inside the game. He says he has a story to tell. And that she already knows the first half.",
-                        "Role: Director, 2 People",
-                        "Timeline: 2026"
+                        "When the reclusive developer refuses all interviews, an unexpected invitation arrives: from his virtual double, inside the game. He says he has a story to tell. And that she already knows the first half."
                     ],
                     "media": [],
                     "layout": "twoColumnText",
@@ -248,7 +255,17 @@
                     "paddingTopPx": 20,
                     "paddingBottomPx": 20,
                     "background": "white",
-                    "textColor": "nightGray"
+                    "textColor": "nightGray",
+                    "meta": [
+                        {
+                            "label": "Role",
+                            "value": "Director, 2 People"
+                        },
+                        {
+                            "label": "Timeline",
+                            "value": "2026"
+                        }
+                    ]
                 },
                 {
                     "kicker": "",
@@ -264,7 +281,8 @@
                     ],
                     "layout": "embedMedia",
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
@@ -283,7 +301,8 @@
                     "paddingTopPx": 0,
                     "background": "lightGray",
                     "paddingBottomPx": 0,
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
@@ -307,7 +326,8 @@
                     ],
                     "layout": "mediaGridTwo",
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
@@ -332,17 +352,20 @@
                     ],
                     "layout": "mediaGridTwo",
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 }
             ],
             "homeCoverMedia": {
                 "type": "video",
                 "src": "/uploads/20260518064213-183b018e-2-simulacrum.mp4",
                 "alt": "2 simulacrum",
-                "fit": "cover"
+                "fit": "cover",
+                "heightPx": 681
             },
             "detailBlocksMigrated": true,
-            "homeTitleColor": "lightGray"
+            "homeTitleColor": "lightGray",
+            "caseBackground": "white"
         },
         {
             "slug": "tripo_studio",
@@ -373,61 +396,69 @@
                     "media": [
                         {
                             "type": "image",
-                            "src": "/uploads/20260517214312-6e075337-link-variant-3.png",
-                            "alt": "link variant 3",
+                            "src": "/uploads/20260518222804-0c789df6-frame-47064.png",
+                            "alt": "frame 47064",
                             "fit": "cover",
                             "heightPx": 493
                         }
                     ],
                     "background": "lightGray",
                     "textColor": "black",
-                    "minHeightPx": 579
+                    "minHeightPx": 579,
+                    "meta": []
                 },
                 {
                     "kicker": "",
-                    "title": "TikTok Core Product Infra - The Main APP",
+                    "title": "Tripo Studio - AI-native 3D professional workstation.",
                     "body": [
-                        "Role · Product Designer",
-                        "Timeline · 2025",
-                        "I served as a platform-level designer under TikTok's Core Product Infrastructure team, helping set component standards and running weekly app-wide design reviews.",
-                        "I owned foundational UI components used globally across the app, including pop-up modals, feed bottom actions, intro sheets, navigation bars, floating notices, and in-app push notifications."
+                        "Tripo Studio is the world's first AI-native 3D workstation designed specifically for professional 3D creators — solving the real pain points of professional 3D creators by using AI to accelerate complex stages of the 3D Pipeline.",
+                        "As the product designer, I built the design system from zero to one and redesigned the responsive web app — from 3D model generation to AI real-time texture painting, retopology, rigging, segmenting, assets, and more.",
+                        "I was also responsible for most of the product management and strategy. I have reconstructed the complex interaction strategies for the 3D pipeline running on the web and established the SOP and standards for evaluating 3D model performance.",
+                        "Every decision aimed at one thing: making professional 3D creation 4x faster — more controllable, more creative, more polished, and more professional."
                     ],
                     "layout": "twoColumnText",
                     "media": [],
-                    "background": "white",
-                    "textColor": "black"
+                    "background": "nightGray",
+                    "textColor": "lightGray",
+                    "meta": [
+                        {
+                            "label": "Role",
+                            "value": "Product Designer → Product Manager"
+                        },
+                        {
+                            "label": "Timeline",
+                            "value": "2025"
+                        }
+                    ]
                 },
                 {
-                    "kicker": "01 / Main App components",
-                    "title": "System-level standards for the main app.",
-                    "body": [
-                        "My work centered on defining, auditing, and iterating component standards that elevate the overall quality and consistency of the main app.",
-                        "The work moved across discovery, consumption, revisit, and creation patterns so teams could share durable interaction foundations."
-                    ],
-                    "layout": "mediaGrid",
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
                     "media": [
                         {
+                            "type": "image",
+                            "src": "/uploads/20260518223800-248af2f1-tripo-5.png",
+                            "alt": "tripo 5",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518223806-cac7ced2-tripo-2.png",
+                            "alt": "tripo 2",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
                             "type": "video",
-                            "src": "/assets/tiktok/nbG0ZNxQ512vKIp1UmcvGaxemXM.mp4",
-                            "alt": "TikTok product infrastructure video",
-                            "widthPercent": 25,
-                            "heightPx": 180
-                        },
-                        {
-                            "type": "image",
-                            "src": "/assets/tiktok/z3KJoLEHYlKhFuWf5iodBt3nmt4.png",
-                            "alt": "TikTok component standard",
-                            "heightPx": 420,
-                            "fit": "contain"
-                        },
-                        {
-                            "type": "image",
-                            "src": "/assets/tiktok/YVGsh9d2qCK6Cc5Uel6kBGwFN3Y.png",
-                            "alt": "TikTok account design",
-                            "fit": "contain",
+                            "src": "/uploads/20260518223813-fa6f7fb5-3d1.mp4",
+                            "alt": "3d1",
+                            "fit": "cover",
                             "heightPx": 681
                         }
                     ],
+                    "layout": "fullBleedMedia",
                     "background": "white",
                     "textColor": "black"
                 }
@@ -436,10 +467,12 @@
                 "type": "image",
                 "src": "/uploads/20260517214312-6e075337-link-variant-3.png",
                 "alt": "link variant 3",
-                "fit": "cover"
+                "fit": "cover",
+                "heightPx": 681
             },
             "detailBlocksMigrated": true,
-            "homeTitleColor": "black"
+            "homeTitleColor": "black",
+            "caseBackground": "nightGray"
         },
         {
             "slug": "harvard_xr_visual_system",
@@ -465,24 +498,34 @@
                             "type": "image",
                             "src": "/assets/home/YY47usy9IwbiBHqoSvv0xMDaSo.png",
                             "alt": "Project preview",
-                            "fit": "cover"
+                            "fit": "cover",
+                            "heightPx": 681
                         }
                     ],
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
                     "title": "TikTok Entertainment",
                     "body": [
-                        "Role · Product Designer",
-                        "Timeline · 2024-25",
                         "Placeholder case study route for future personal content."
                     ],
                     "layout": "twoColumnText",
                     "media": [],
                     "background": "white",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": [
+                        {
+                            "label": "Role",
+                            "value": "Product Designer"
+                        },
+                        {
+                            "label": "Timeline",
+                            "value": "2024-25"
+                        }
+                    ]
                 }
             ],
             "accentTheme": "placeholder",
@@ -494,10 +537,12 @@
                 "type": "video",
                 "src": "/uploads/20260518065621-659e7d4c-hxr.mp4",
                 "alt": "hxr",
-                "fit": "cover"
+                "fit": "cover",
+                "heightPx": 681
             },
             "detailBlocksMigrated": true,
-            "homeTitleColor": "black"
+            "homeTitleColor": "black",
+            "caseBackground": "white"
         },
         {
             "slug": "willow_ios",
@@ -530,18 +575,18 @@
                             "type": "image",
                             "src": "/uploads/20260518032801-47b630fd-image-146.png",
                             "alt": "image 146",
-                            "fit": "cover"
+                            "fit": "cover",
+                            "heightPx": 681
                         }
                     ],
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
                     "title": "Willow iOS",
                     "body": [
-                        "Role · Product Designer",
-                        "Timeline · 2026",
                         "I worked on the iOS design for Willow from zero to launch, owning the core user-facing experiences.",
                         "Designed five key surfaces - Dictionary, Homepage, Dictation History, Style Matching, and Profile and Settings - with a focus on activation, retention, and conversion."
                     ],
@@ -551,7 +596,17 @@
                     "paddingTopPx": 20,
                     "paddingBottomPx": 20,
                     "background": "white",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": [
+                        {
+                            "label": "Role",
+                            "value": "Product Designer"
+                        },
+                        {
+                            "label": "Timeline",
+                            "value": "2026"
+                        }
+                    ]
                 },
                 {
                     "kicker": "",
@@ -569,7 +624,8 @@
                     "layout": "textMediaSplit",
                     "minHeightPx": 0,
                     "background": "white",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
@@ -607,17 +663,20 @@
                     ],
                     "layout": "fullBleedMedia",
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 }
             ],
             "homeCoverMedia": {
                 "type": "image",
                 "src": "/uploads/20260518041348-eb73d6f4-34242.png",
                 "alt": "34242",
-                "fit": "cover"
+                "fit": "cover",
+                "heightPx": 681
             },
             "detailBlocksMigrated": true,
-            "homeTitleColor": "lightGray"
+            "homeTitleColor": "lightGray",
+            "caseBackground": "white"
         },
         {
             "slug": "spectacle_farce",
@@ -643,24 +702,34 @@
                             "type": "image",
                             "src": "/assets/home/MJEUzqAUYToqEzCAPoptrTsdPGI.png",
                             "alt": "Project preview",
-                            "fit": "cover"
+                            "fit": "cover",
+                            "heightPx": 681
                         }
                     ],
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
                     "title": "Longcut.ai",
                     "body": [
-                        "Role · Product Designer",
-                        "Timeline · 2025",
                         "Placeholder case study route for future personal content."
                     ],
                     "layout": "twoColumnText",
                     "media": [],
                     "background": "white",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": [
+                        {
+                            "label": "Role",
+                            "value": "Product Designer"
+                        },
+                        {
+                            "label": "Timeline",
+                            "value": "2025"
+                        }
+                    ]
                 }
             ],
             "accentTheme": "placeholder",
@@ -672,10 +741,12 @@
                 "type": "image",
                 "src": "/uploads/20260518082337-75a55cd2-1672909521664867.jpg",
                 "alt": "1672909521664867",
-                "fit": "cover"
+                "fit": "cover",
+                "heightPx": 681
             },
             "detailBlocksMigrated": true,
-            "homeTitleColor": "lightGray"
+            "homeTitleColor": "lightGray",
+            "caseBackground": "white"
         }
     ]
 }
