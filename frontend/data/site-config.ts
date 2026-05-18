@@ -4,6 +4,8 @@ import type { BlockColor, CaseStudySection, MediaAsset, Project, SiteConfig } fr
 
 const CONFIG_PATH = path.join(process.cwd(), "data", "site-config.json");
 const HISTORY_PATH = path.join(process.cwd(), "data", "site-config.history.jsonl");
+const PUBLIC_ROOT = path.join(process.cwd(), "public");
+const UPLOAD_DIR = path.join(PUBLIC_ROOT, "uploads");
 
 export async function readSiteConfig(): Promise<SiteConfig> {
     const raw = await fs.readFile(CONFIG_PATH, "utf8");
@@ -147,6 +149,7 @@ export async function writeSiteConfig(config: SiteConfig, summary = "Saved from 
         `${JSON.stringify({ savedAt: new Date().toISOString(), summary })}\n`,
         "utf8",
     );
+    await deleteUnreferencedUploads(config);
 }
 
 export async function getImplementedSlugs() {
@@ -157,4 +160,39 @@ export async function getImplementedSlugs() {
 export async function getProject(slug: string) {
     const config = await readSiteConfig();
     return config.projects.find((project) => project.slug === slug);
+}
+
+function collectUploadReferences(value: unknown, references = new Set<string>()) {
+    if (typeof value === "string" && value.startsWith("/uploads/")) {
+        references.add(path.basename(value));
+        return references;
+    }
+
+    if (Array.isArray(value)) {
+        value.forEach((item) => collectUploadReferences(item, references));
+        return references;
+    }
+
+    if (value && typeof value === "object") {
+        Object.values(value).forEach((item) => collectUploadReferences(item, references));
+    }
+
+    return references;
+}
+
+async function deleteUnreferencedUploads(config: SiteConfig) {
+    const referencedUploads = collectUploadReferences(config);
+
+    let uploadEntries: string[];
+    try {
+        uploadEntries = await fs.readdir(UPLOAD_DIR);
+    } catch {
+        return;
+    }
+
+    await Promise.all(
+        uploadEntries
+            .filter((fileName) => !referencedUploads.has(fileName))
+            .map((fileName) => fs.rm(path.join(UPLOAD_DIR, fileName), { force: true })),
+    );
 }
