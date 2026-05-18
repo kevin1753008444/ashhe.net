@@ -20,6 +20,11 @@ function normalizeSiteConfig(config: SiteConfig): SiteConfig {
 
     return {
         ...config,
+        site: {
+            title: config.site?.title ?? "Ash's Hub",
+            description: config.site?.description ?? "Product Design",
+            icon: config.site?.icon ?? "/favicon.svg",
+        },
         projects: config.projects.map((project) => normalizeProject(project, defaultMediaHeight)),
         design: {
             ...config.design,

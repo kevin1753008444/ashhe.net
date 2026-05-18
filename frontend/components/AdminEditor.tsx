@@ -7,10 +7,11 @@ import type { ChangeEvent } from "react";
 import type { BlockColor, CaseStudySection, MediaAsset, Project, SiteConfig } from "@/data/site-types";
 import styles from "./AdminEditor.module.css";
 
-type Tab = "content" | "sidebar" | "home" | "responsive" | "case" | "media";
+type Tab = "site" | "content" | "sidebar" | "home" | "responsive" | "case" | "media";
 type UploadTarget = "cover" | "section";
 
 const tabs: { id: Tab; label: string }[] = [
+    { id: "site", label: "站点" },
     { id: "content", label: "内容" },
     { id: "sidebar", label: "侧边栏" },
     { id: "home", label: "首页" },
@@ -519,6 +520,41 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
         setStatus(`已上传 ${payload.media.src}`);
     }
 
+    async function uploadSiteIcon(event: ChangeEvent<HTMLInputElement>) {
+        const file = event.target.files?.[0];
+        event.target.value = "";
+
+        if (!file) {
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+        setStatus("正在上传标签页 icon...");
+
+        const response = await fetch("/api/media", {
+            method: "POST",
+            body: formData,
+        });
+
+        if (!response.ok) {
+            setStatus(await response.text());
+            return;
+        }
+
+        const payload = (await response.json()) as { media: MediaAsset };
+        if (payload.media.type !== "image") {
+            await deleteUploadedFile(payload.media.src);
+            setStatus("标签页 icon 只能使用图片、SVG 或 ICO 文件");
+            return;
+        }
+
+        updateConfig((draft) => {
+            draft.site.icon = payload.media.src;
+        });
+        setStatus(`已更新标签页 icon：${payload.media.src}`);
+    }
+
     async function uploadCoverMedia(event: ChangeEvent<HTMLInputElement>) {
         const file = event.target.files?.[0];
         event.target.value = "";
@@ -841,6 +877,40 @@ export function AdminEditor({ initialConfig, initialProjectSlug }: { initialConf
                 </nav>
 
                 <section className={styles.editorPanel}>
+                    {activeTab === "site" && (
+                        <div className={styles.stack}>
+                            <h1>站点标签</h1>
+                            <TextField
+                                label="浏览器标签标题"
+                                value={config.site.title}
+                                onChange={(value) => updateConfig((draft) => { draft.site.title = value; })}
+                            />
+                            <TextField
+                                label="搜索描述"
+                                value={config.site.description}
+                                onChange={(value) => updateConfig((draft) => { draft.site.description = value; })}
+                            />
+                            <TextField
+                                label="标签页 icon 路径"
+                                value={config.site.icon}
+                                onChange={(value) => updateConfig((draft) => { draft.site.icon = value; })}
+                            />
+                            <div className={styles.siteIconPreview}>
+                                <span>当前 icon</span>
+                                <img src={config.site.icon} alt="" />
+                                <code>{config.site.icon}</code>
+                            </div>
+                            <div className={styles.uploadBox}>
+                                <p>可上传 PNG、JPG、WEBP、GIF、SVG 或 ICO。保存后刷新公开页面即可看到标签页变化。</p>
+                                <label>
+                                    <Upload size={16} />
+                                    上传标签页 icon
+                                    <input type="file" accept="image/*,.ico,.svg" onChange={uploadSiteIcon} />
+                                </label>
+                            </div>
+                        </div>
+                    )}
+
                     {activeTab === "content" && selectedProject && (
                         <div className={styles.stack}>
                             <h1>全站内容</h1>

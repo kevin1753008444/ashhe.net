@@ -134,7 +134,14 @@ export type DesignSettings = {
     responsive: ResponsiveDesign;
 };
 
+export type SiteMetadata = {
+    title: string;
+    description: string;
+    icon: string;
+};
+
 export type SiteConfig = {
+    site: SiteMetadata;
     profile: Profile;
     design: DesignSettings;
     projects: Project[];

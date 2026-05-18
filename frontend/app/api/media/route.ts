@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 const PUBLIC_ROOT = path.join(process.cwd(), "public");
 const UPLOAD_DIR = path.join(PUBLIC_ROOT, "uploads");
-const ALLOWED_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".mp4", ".mov", ".webm"]);
+const ALLOWED_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".ico", ".mp4", ".mov", ".webm"]);
 const VIDEO_EXTENSIONS = new Set([".mp4", ".mov", ".webm"]);
 
 function getSafeFileName(name: string) {

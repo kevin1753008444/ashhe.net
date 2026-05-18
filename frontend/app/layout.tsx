@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
+import { readSiteConfig } from "@/data/site-config";
 import "./globals.css";
 
-export const metadata: Metadata = {
-    title: "Yiqi's hub",
-    description: "Product Design",
-    icons: {
-        icon: "/favicon.svg",
-    },
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const config = await readSiteConfig();
+
+    return {
+        title: config.site.title,
+        description: config.site.description,
+        icons: {
+            icon: config.site.icon,
+        },
+    };
+}
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (

@@ -2,9 +2,10 @@
     "profile": {
         "name": "Ash He",
         "intro": [
-            "Founding Designer @Willow",
-            "Prev. @TikTok, @Tencent, @Meta",
-            "HCI @Harvard @Tsinghua"
+            "AI Product Designer & Builder",
+            "Creative Director, AI Filmmaker",
+            "Prev. @Tripo3d.ai, @Tencent",
+            "HCI @Harvard"
         ],
         "location": "Cambridge, Massachusetts"
     },
@@ -115,7 +116,16 @@
                     "paddingTopPx": 40,
                     "paddingBottomPx": 40,
                     "minHeightPx": 203,
-                    "meta": []
+                    "meta": [
+                        {
+                            "label": "Role",
+                            "value": "Creative Director, 2 People"
+                        },
+                        {
+                            "label": "Time",
+                            "value": "2026"
+                        }
+                    ]
                 },
                 {
                     "kicker": "",
@@ -259,7 +269,7 @@
                     "meta": [
                         {
                             "label": "Role",
-                            "value": "Director, 2 People"
+                            "value": "Creative Director, 2 People"
                         },
                         {
                             "label": "Timeline",
@@ -453,7 +463,8 @@
                     ],
                     "layout": "fullBleedMedia",
                     "background": "white",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "01",
@@ -465,7 +476,8 @@
                     "paddingTopPx": 16,
                     "paddingBottomPx": 17,
                     "background": "white",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
@@ -489,7 +501,8 @@
                     ],
                     "layout": "fullBleedMedia",
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "02",
@@ -501,7 +514,33 @@
                     "paddingTopPx": 16,
                     "paddingBottomPx": 16,
                     "background": "white",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518224810-3d2cab1f-media.png",
+                            "alt": "media",
+                            "fit": "cover",
+                            "heightPx": 238
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518224815-f78a11ee-tripo-1.png",
+                            "alt": "tripo 1",
+                            "fit": "cover",
+                            "heightPx": 238
+                        }
+                    ],
+                    "layout": "mediaGridTwo",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
                 },
                 {
                     "kicker": "",
@@ -510,27 +549,104 @@
                     "media": [
                         {
                             "type": "video",
-                            "src": "/uploads/20260518224453-eba635b5-1.mp4",
+                            "src": "/uploads/20260518224706-f9aa6d7b-1.mp4",
                             "alt": "1",
+                            "fit": "cover",
+                            "heightPx": 353
+                        },
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518224711-c2901741-2.mp4",
+                            "alt": "2",
+                            "fit": "cover",
+                            "heightPx": 353
+                        }
+                    ],
+                    "layout": "mediaGridTwo",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "03",
+                    "title": "AI Retexture",
+                    "body": [],
+                    "media": [],
+                    "layout": "twoColumnText",
+                    "minHeightPx": 0,
+                    "paddingTopPx": 16,
+                    "paddingBottomPx": 16,
+                    "background": "white",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518225436-4f7af74a-tripo-3.png",
+                            "alt": "tripo 3",
                             "fit": "cover",
                             "heightPx": 681
                         },
                         {
                             "type": "video",
-                            "src": "/uploads/20260518224501-144f8f78-2.mp4",
-                            "alt": "2",
+                            "src": "/uploads/20260518225442-6c689c5b-media.mp4",
+                            "alt": "media",
                             "fit": "cover",
                             "heightPx": 681
                         }
                     ],
                     "layout": "fullBleedMedia",
                     "background": "lightGray",
-                    "textColor": "black"
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "04",
+                    "title": "AI Rigging",
+                    "body": [],
+                    "media": [],
+                    "layout": "twoColumnText",
+                    "minHeightPx": 0,
+                    "paddingTopPx": 16,
+                    "paddingBottomPx": 16,
+                    "background": "white",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518225408-b3a912c2-1.mp4",
+                            "alt": "1",
+                            "fit": "cover",
+                            "heightPx": 368
+                        },
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518225413-1777b393-2.mp4",
+                            "alt": "2",
+                            "fit": "cover",
+                            "heightPx": 368
+                        }
+                    ],
+                    "layout": "mediaGridTwo",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
                 }
             ],
             "homeCoverMedia": {
                 "type": "image",
-                "src": "/uploads/20260517214312-6e075337-link-variant-3.png",
+                "src": "/uploads/20260518225532-23a09c6a-link-variant-3.png",
                 "alt": "link variant 3",
                 "fit": "cover",
                 "heightPx": 681
@@ -560,11 +676,12 @@
                     "layout": "hero",
                     "media": [
                         {
-                            "type": "image",
-                            "src": "/assets/home/YY47usy9IwbiBHqoSvv0xMDaSo.png",
-                            "alt": "Project preview",
+                            "type": "video",
+                            "src": "/uploads/20260518233342-34c09db9-hxr.mp4",
+                            "alt": "hxr",
                             "fit": "cover",
-                            "heightPx": 681
+                            "widthPercent": 100,
+                            "heightPx": 1034
                         }
                     ],
                     "background": "lightGray",
@@ -573,9 +690,10 @@
                 },
                 {
                     "kicker": "",
-                    "title": "TikTok Entertainment",
+                    "title": "Harvard XR Conference Visual Identity",
                     "body": [
-                        "Placeholder case study route for future personal content."
+                        "HarvardXR 2026: From Pixel to Voxel explores the convergence of AI and XR at Harvard University and beyond. The conference provides a platform for students, researchers, practitioners, and entrepreneurs to discuss how XR is shaping the future across industries, examining its history, current applications, and emerging possibilities.",
+                        "To express the conference’s core values, I developed the overall visual identity concept and led a team of designers in extending and applying it across different touchpoints. Centered on the motif of voxels, which symbolize 3D digital building blocks and technological evolution, the visual system reflects the event’s innovative and future-oriented spirit."
                     ],
                     "layout": "twoColumnText",
                     "media": [],
@@ -584,13 +702,203 @@
                     "meta": [
                         {
                             "label": "Role",
-                            "value": "Product Designer"
+                            "value": "Design Lead, Visual & Motion Designer"
                         },
                         {
                             "label": "Timeline",
-                            "value": "2024-25"
+                            "value": "2025-2026"
                         }
                     ]
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518232249-0eeaf358-harvardxr-2026-logo.jpg",
+                            "alt": "harvardxr 2026 logo",
+                            "fit": "cover",
+                            "heightPx": 478,
+                            "widthPercent": 100
+                        }
+                    ],
+                    "layout": "fullBleedMedia",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518233726-2df23eeb-harvardxr-2026-color-palette.png",
+                            "alt": "harvardxr 2026 color palette",
+                            "fit": "cover",
+                            "heightPx": 108
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518233730-ee3a48d6-harvardxr-2026-typography.jpg",
+                            "alt": "harvardxr 2026 typography",
+                            "fit": "cover",
+                            "heightPx": 108
+                        }
+                    ],
+                    "layout": "mediaGridTwo",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518233757-c9e1160c-slide-16_9---27.jpg",
+                            "alt": "slide 16_9   27",
+                            "fit": "cover",
+                            "heightPx": 681
+                        }
+                    ],
+                    "layout": "fullBleedMedia",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518233212-f3dac3a6-slide-16_9---28.jpg",
+                            "alt": "slide 16_9   28",
+                            "fit": "cover",
+                            "heightPx": 218
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518233216-673883d5-slide-16_9---29.jpg",
+                            "alt": "slide 16_9   29",
+                            "fit": "cover",
+                            "heightPx": 218
+                        }
+                    ],
+                    "layout": "mediaGridTwo",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518233446-11f65efc-jimeng-2026-04-07-4902-main-subject-360-degree-rotation.mp4",
+                            "alt": "jimeng 2026 04 07 4902 main subject 360 degree rotation",
+                            "fit": "cover",
+                            "heightPx": 624
+                        },
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518233458-e222b826-jimeng-2026-04-07-6606-main-subject-360-degree-rotation.mp4",
+                            "alt": "jimeng 2026 04 07 6606 main subject 360 degree rotation",
+                            "fit": "cover",
+                            "heightPx": 624
+                        },
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518233502-78c729c0-jimeng-2026-04-07-5988-main-subject-360-degree-rotation.mp4",
+                            "alt": "jimeng 2026 04 07 5988 main subject 360 degree rotation",
+                            "fit": "cover",
+                            "heightPx": 624
+                        }
+                    ],
+                    "layout": "mediaGridThree",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518233555-abebbd3b-speaker.png",
+                            "alt": "speaker",
+                            "fit": "cover",
+                            "heightPx": 378
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518233623-9a77d35d-speaker-2.png",
+                            "alt": "speaker 2",
+                            "fit": "cover",
+                            "heightPx": 378
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518233631-63ac94ea-speaker-1.png",
+                            "alt": "speaker 1",
+                            "fit": "cover",
+                            "heightPx": 378
+                        }
+                    ],
+                    "layout": "mediaGridThree",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518233947-d32a3fc1-_2026-05-18_191754_631.jpg",
+                            "alt": "_2026 05 18_191754_631",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518234002-415c3d32-_2026-05-18_191810_980.jpg",
+                            "alt": "_2026 05 18_191810_980",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518234009-3b65826c-_2026-05-18_191818_569.jpg",
+                            "alt": "_2026 05 18_191818_569",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518234016-4def1497-meitu_20260424_101738386.jpg",
+                            "alt": "meitu_20260424_101738386",
+                            "fit": "cover",
+                            "heightPx": 681
+                        }
+                    ],
+                    "layout": "fullBleedMedia",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
                 }
             ],
             "accentTheme": "placeholder",
@@ -650,32 +958,32 @@
                 },
                 {
                     "kicker": "",
-                    "title": "Willow iOS",
+                    "title": "Pop Mart - Skull Panda Commercial CG",
                     "body": [
-                        "I worked on the iOS design for Willow from zero to launch, owning the core user-facing experiences.",
-                        "Designed five key surfaces - Dictionary, Homepage, Dictation History, Style Matching, and Profile and Settings - with a focus on activation, retention, and conversion."
+                        "In early 2024, we received an invitation from Pop Mart to create a surrealist CG promotional film for their new SKULLPANDA collectible figure series, themed around absurdist joy.",
+                        "We divided the film into 5 chapters, using a surrealist visual language to bring the absurdist joy of the SkullPanda series to life — expressing a critique of and reflection on time, gravity, imagination, order, and reality."
                     ],
                     "layout": "twoColumnText",
                     "media": [],
                     "minHeightPx": 0,
-                    "paddingTopPx": 20,
-                    "paddingBottomPx": 20,
+                    "paddingTopPx": 71,
+                    "paddingBottomPx": 68,
                     "background": "white",
                     "textColor": "black",
                     "meta": [
                         {
                             "label": "Role",
-                            "value": "Product Designer"
+                            "value": "Creative Director"
                         },
                         {
                             "label": "Timeline",
-                            "value": "2026"
+                            "value": "2024"
                         }
                     ]
                 },
                 {
                     "kicker": "",
-                    "title": "Skull Panda",
+                    "title": "Production",
                     "body": [],
                     "media": [
                         {
@@ -688,6 +996,75 @@
                     ],
                     "layout": "textMediaSplit",
                     "minHeightPx": 0,
+                    "background": "white",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518231256-91ee83e2-3.mp4",
+                            "alt": "3",
+                            "fit": "cover",
+                            "heightPx": 388
+                        },
+                        {
+                            "type": "video",
+                            "src": "/uploads/20260518231300-29040d13-2.mp4",
+                            "alt": "2",
+                            "fit": "cover",
+                            "heightPx": 388
+                        }
+                    ],
+                    "layout": "mediaGridTwo",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "01",
+                    "title": "Prologue",
+                    "body": [],
+                    "media": [],
+                    "layout": "twoColumnText",
+                    "minHeightPx": 0,
+                    "paddingTopPx": 35,
+                    "paddingBottomPx": 35,
+                    "background": "white",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518231456-eb0bb14c-image-149.png",
+                            "alt": "image 149",
+                            "fit": "cover",
+                            "heightPx": 681
+                        }
+                    ],
+                    "layout": "fullBleedMedia",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "Key Frames",
+                    "body": [],
+                    "media": [],
+                    "layout": "twoColumnText",
+                    "minHeightPx": 0,
+                    "paddingTopPx": 30,
+                    "paddingBottomPx": 30,
                     "background": "white",
                     "textColor": "black",
                     "meta": []
@@ -722,6 +1099,27 @@
                             "type": "image",
                             "src": "/uploads/20260518033849-c54e0353-image-147.png",
                             "alt": "image 147",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518231623-2fd16d62-image-150.png",
+                            "alt": "image 150",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518231631-af6238a2-image-146.png",
+                            "alt": "image 146",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518231634-2a6d8071-image-152.png",
+                            "alt": "image 152",
                             "fit": "cover",
                             "heightPx": 681
                         }
@@ -765,8 +1163,8 @@
                     "media": [
                         {
                             "type": "image",
-                            "src": "/assets/home/MJEUzqAUYToqEzCAPoptrTsdPGI.png",
-                            "alt": "Project preview",
+                            "src": "/uploads/20260518225836-f55b0da4-1672909521664867.jpg",
+                            "alt": "1672909521664867",
                             "fit": "cover",
                             "heightPx": 681
                         }
@@ -777,9 +1175,9 @@
                 },
                 {
                     "kicker": "",
-                    "title": "Longcut.ai",
+                    "title": "Spectacle Farce",
                     "body": [
-                        "Placeholder case study route for future personal content."
+                        "A small spectacle-like stage. We create spectacles to present a socialized spectacle carnival"
                     ],
                     "layout": "twoColumnText",
                     "media": [],
@@ -788,13 +1186,86 @@
                     "meta": [
                         {
                             "label": "Role",
-                            "value": "Product Designer"
+                            "value": "Creative Director"
                         },
                         {
                             "label": "Timeline",
-                            "value": "2025"
+                            "value": "2023"
                         }
-                    ]
+                    ],
+                    "paddingTopPx": 82,
+                    "paddingBottomPx": 83
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "embed",
+                            "src": "https://www.youtube.com/watch?v=s3mHJS4iTzE",
+                            "alt": "外部视频",
+                            "fit": "cover"
+                        }
+                    ],
+                    "layout": "embedMedia",
+                    "paddingTopPx": 114,
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
+                },
+                {
+                    "kicker": "",
+                    "title": "",
+                    "body": [],
+                    "media": [
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518230047-313db293-1672909553240041.jpg",
+                            "alt": "1672909553240041",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518230056-b4792be0-1672909533893662.jpg",
+                            "alt": "1672909533893662",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518230103-25454365-1672909607487015.jpg",
+                            "alt": "1672909607487015",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518230110-fa3f9c54-1672909742457431.jpg",
+                            "alt": "1672909742457431",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518230114-33bff8c5-1672909563335640.jpg",
+                            "alt": "1672909563335640",
+                            "fit": "cover",
+                            "heightPx": 681
+                        },
+                        {
+                            "type": "image",
+                            "src": "/uploads/20260518230122-4b01bdb5-1672909589542611.jpg",
+                            "alt": "1672909589542611",
+                            "fit": "cover",
+                            "heightPx": 681
+                        }
+                    ],
+                    "layout": "fullBleedMedia",
+                    "background": "lightGray",
+                    "textColor": "black",
+                    "meta": []
                 }
             ],
             "accentTheme": "placeholder",
@@ -813,5 +1284,10 @@
             "homeTitleColor": "lightGray",
             "caseBackground": "white"
         }
-    ]
+    ],
+    "site": {
+        "title": "Ash's Hub",
+        "description": "Product Design",
+        "icon": "/favicon.svg"
+    }
 }
