@@ -94,7 +94,10 @@ try {
     await copySource();
     await run("node", [path.join(root, "node_modules", "next", "dist", "bin", "next"), "build"], {
         cwd: buildRoot,
-        env: { STATIC_EXPORT: "1" },
+        env: {
+            NODE_ENV: "production",
+            STATIC_EXPORT: "1",
+        },
     });
     await rm(finalOut, { recursive: true, force: true });
     await cp(path.join(buildRoot, "out"), finalOut, { recursive: true });
